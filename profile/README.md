@@ -142,17 +142,17 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    
 - `Dragonpilot Maps tab`
  - **DP NAV:**
-  - **Enable Nav.:** This will let use the build in Navigation. Reboot required.
-  - **Enable Local Nav Server:** This will let use Navigation feature with your own access key. Use web interface to control it: *http://<device_ip>:8082* or scan the qr code on the sidebar. You will need to apply your own mapbox token at https://www.mapbox.com/. Internet access from mobile phone (tethering) is required. Reboot required.
-  - **Search Destination using Google Maps:** This will allow you to search destination in google map api. You will need to apply your own google map api key. Enter your key detail in web interface once it's enabled.
-  - **Show Full Screen Nav.:** This will show navigation in full screen. Please tap green boarder if you wish to switch back drive view.
-  - **DP MapD**
-  - **Enable MapD:** Use OSM to assist lateral/longitudinal control. Please note: This feature will works only when your car support OP longitudinal. *MapD will contribute your route to OSM for future improvement automatically.* You can add your own offset for mapd just follow the readme under `/selfdrive/mapd` Not connecting to the internet for while might feel up device storage from all the gps traces.
-  - **Use Mapd without data:** You need minimum of 50 gb storage in `/data/media/0/`. Run `df -h /data/media/0/` to see how much space you have available. Strongly recommend getting 1 TB ssd. If you decide not to upgrade you can delete all logs under dp-general.
-  - **Enable Speed Limit Control:** Use speed limit signs information from map data and car interface to automatically adapt cruise speed to road limits.
-  - **Enable Speed Limit Offset:** Set speed limit slightly higher than actual speed limit for a more natural drive.
-  - **Enable Map Data Turn Control:** Use curvature info from map data to define speed limits to take turns ahead.
-  - **Show debug UI elements:** Show UI elements that aid debugging.
+      - **Enable Nav.:** This will let use the build in Navigation. Reboot required.
+      - **Enable Local Nav Server:** This will let use Navigation feature with your own access key. Use web interface to control it: *http://<device_ip>:8082* or scan the qr code on the sidebar. You will need to apply your own mapbox token at https://www.mapbox.com/. Internet access from mobile phone (tethering) is required. Reboot required.
+      - **Search Destination using Google Maps:** This will allow you to search destination in google map api. You will need to apply your own google map api key. Enter your key detail in web interface once it's enabled.
+       - **Show Full Screen Nav.:** This will show navigation in full screen. Please tap green boarder if you wish to switch back drive view.
+ - **DP MapD**
+      - **Enable MapD:** Use OSM to assist lateral/longitudinal control. Please note: This feature will works only when your car support OP longitudinal. *MapD will contribute your route to OSM for future improvement automatically.* You can add your own offset for mapd just follow the readme under `/selfdrive/mapd` Not connecting to the internet for while might feel up device storage from all the gps traces.
+      - **Use Mapd without data:** You need minimum of 50 gb storage in `/data/media/0/`. Run `df -h /data/media/0/` to see how much space you have available. Strongly recommend getting 1 TB ssd. If you decide not to upgrade you can delete all logs under dp-general.
+       - **Enable Speed Limit Control:** Use speed limit signs information from map data and car interface to automatically adapt cruise speed to road limits.
+      - **Enable Speed Limit Offset:** Set speed limit slightly higher than actual speed limit for a more natural drive.
+      - **Enable Map Data Turn Control:** Use curvature info from map data to define speed limits to take turns ahead.
+      - **Show debug UI elements:** Show UI elements that aid debugging.
 
 User Data
 ================
