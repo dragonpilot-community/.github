@@ -35,6 +35,7 @@ This fork is focused on Toyotas and Lexus with secondary attention given to Hond
 Main Features
 ==============
  - Always On lateral for all car makes.
+ - All tuning types for all vehicles.
  - The ability to toggle every aspect of your openpilot experience
  - Mapd support thanks to the @move-fast
  - Mapd can be used offline on select regions by downloading database on device.
@@ -113,7 +114,8 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **End-to-end Speed Override:** when acc set speed below the setting and there is no lead car, e2e will be turned on automatically. 1 kp/h = 0.62 mph
    - **Enable Device Temp Check:** Override openpilot temperature safe check to engage
    - **Enable Max Ctrl Speed Check:** allows openpilot run at more than 95 mph
-   
+   - **Tuning Selector:** Manually select between PID, LQR, INDI, Torque controllers.
+
 - `Dragonpilot UI tab`
    - **Display Mode:** 0 = Default  1 = Screen Off While Driving
    - **Screen Brightness:** Adjust your screen brightness.
