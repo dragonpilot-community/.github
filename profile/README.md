@@ -35,6 +35,7 @@ This fork is focused on Toyotas and Lexus with secondary attention given to Hond
 Main Features
 ==============
  - Always On lateral for all car makes.
+ - All tuning types for all vehicles. (PID, INDI, LQR, TORQUE)
  - The ability to toggle every aspect of your openpilot experience
  - Mapd support thanks to the @move-fast
  - Mapd can be used offline on select regions by downloading database on device.
@@ -47,13 +48,12 @@ Main Features
  - Auto lock and unlock door for Toyota.
  - Volkswagen support for auto resume.
  - Choose bettween three different Lateral palanner. (0.8.13, 0.8.16, latest)
- - Laneline with auto DLP.
+ - Laneline with auto DLP (Dynamic Lane Profile) @sunnyhaibin.
  - Lane chage mode (1 = lane change assist, 2 = auto lane change assist) both customizeable.
- - Lateral controller chooser (pid / lqr / torque) for all car make.
  - Car selector for fast start up.
  - MapBox support without needing comma prime
  - C2 support for lastest master release via beta/release2/release2_e2e branches
- - Weekly rebased with [comma/master](https://github.com/commaai/openpilot) branch for our c3 users
+ - Weekly/bi-weekly rebased with [comma/master](https://github.com/commaai/openpilot) branch for our c3 users
 
 Branch Definitions
 ====================
@@ -96,23 +96,24 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Delete All Driving Log:** Tap the button to delete ALL your driving logs (including dashcam `/gpx/` driving logs)
    
  - `Dragonpilot Controls tab`
-   - **Later Planner Mode:** change your lateral planner version. 1 = 0.8.13 2 = 0.8.16
+   - **Planner Vesrion:** change your lateral planner version. 1 = 0.8.13 2 = 0.8.16
+   - **Controller Type:** Override the default controller. 1 = PID 2 = LQR 3 = Torque Your Vehicle may not support all the options, YMMV.
+   - **Enable Torque Ctrl Auto Tune:** Enable auto tune Torque controller. WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
    - **Always On Lateral:** Use at your own risk! Your drive will not upload but you can find them under `/data/media/0/fakedata` you will not be ban but we just don't upload since comma does not use data from fork but it will be stored locally. 0 = stock  1 = Stock Long 2 = OP Long. Reboot required.
    - **Use Lanelines:** "Use Lanelines instead of End-to-End when possible
    - **Lane Change Mode:** 1 = Lane Change Assist (LCA) 2 = Auto Lane Change Assist (ALCA)
-   - **LCA Min Speed:** LCA minimum engage speed in mph. 1 mph = 1.61 km/h
-   - **ALCA Delay:** Once the vehicle meets all ALCA criteria, it will wait for the seconds set here before performing lane change automatically
-   - **ALCA Min Speed:** ALCA minimum engage speed in mph. 1 mph = 1.61 km/h
-   - **Use LQR Controller:** Enable this if you wish to use LQR instead of PID or INDI controller.WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
-   - **Use Torque Controller:**  Enable this if you wish to use Torque instead of PID or INDI or LQR controller. WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
-   - **Enable Torque Ctrl Auto Tune:** Enable auto tune Torque controller. WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
+     - **LCA Min Speed:** LCA minimum engage speed in mph. 1 mph = 1.61 km/h
+     - **ALCA Delay:** Once the vehicle meets all ALCA criteria, it will wait for the seconds set here before performing lane change automatically
+     - **ALCA Min Speed:** ALCA minimum engage speed in mph. 1 mph = 1.61 km/h
    - **Manually Control Accel Mode:** Enable this if you wish to adjust openpilot's acceleration control.
    - **Enable vision based turn control:** Use vision path predictions to estimate the appropriate speed to drive through turns ahead
    - **Manually Control Following Distance Mode:** Enable this if you wish to adjust openpilot's following distance. openpilot by default keeps 1.45 secs distance to lead car. When on close will be dynamic but get closer in traffic. Normal is also dynamic and it get further and far is stock 1.45se
    - **Dynamic End-to-end:** Automatically Turn On and Off End-to-end longitudinal (extremely alpha), this will ignore the stock end-to-end settings
-   - **End-to-end Speed Override:** when acc set speed below the setting and there is no lead car, e2e will be turned on automatically. 1 kp/h = 0.62 mph
+     - **E2E When Car Set Speed Below (w/o Lead):** when acc set speed below the setting and there is no lead car, e2e will be turned on automatically. 1 kp/h = 0.62 mph
+     - **E2E When Lead Car Speed Below:** when lead car is going below the setting, e2e will be turned on automatically. 1 kp/h = 0.62 mph
    - **Enable Device Temp Check:** Override openpilot temperature safe check to engage
    - **Enable Max Ctrl Speed Check:** allows openpilot run at more than 95 mph
+   - **Controller Type:** Manually select between PID, LQR, INDI, Torque controllers.
    
 - `Dragonpilot UI tab`
    - **Display Mode:** 0 = Default  1 = Screen Off While Driving
@@ -125,6 +126,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Display side info** Enable this to display steering angle/lead car/distance/engine RPM.
    - **Display Top Info:** Enable this to display time / system temp / battery level.
    - **Display Lead Speed/Distance:** Display detected lead objects' speed and distance.
+   - **Display Driver Camera:** Display Driver Camera when reversing.
 
 - `Dragonpilot Cars tab`
    - **Enable SnG Mod Toyota:** Enable this to fix stop and go (SnG) issue on some models. Reboot required.
@@ -143,16 +145,18 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
 - `Dragonpilot Maps tab`
  - **DP NAV:**
       - **Enable Nav.:** This will let use the build in Navigation. Reboot required.
-      - **Enable Local Nav Server:** This will let use Navigation feature with your own access key. Use web interface to control it: *http://<device_ip>:8082* or scan the qr code on the sidebar. You will need to apply your own mapbox token at https://www.mapbox.com/. Internet access from mobile phone (tethering) is required. Reboot required.
-      - **Search Destination using Google Maps:** This will allow you to search destination in google map api. You will need to apply your own google map api key. Enter your key detail in web interface once it's enabled.
-      - **Show Full Screen Nav.:** This will show navigation in full screen. Please tap green boarder if you wish to switch back drive view.
+        - **Enable Local Nav Server:** This will let use Navigation feature with your own access key. Use web interface to control it: *http://<device_ip>:8082* or scan the qr code on the sidebar. You will need to apply your own mapbox token at https://www.mapbox.com/. Internet access from mobile phone (tethering) is required. Reboot required.
+        - **Search Destination using Google Maps:** This will allow you to search destination in google map api. You will need to apply your own google map api key. Enter your key detail in web interface once it's enabled.
+        - **Show Full Screen Nav.:** This will show navigation in full screen. Please tap green boarder if you wish to switch back drive view.
+ 
  - **DP MapD**
       - **Enable MapD:** Use OSM to assist lateral/longitudinal control. Please note: This feature will works only when your car support OP longitudinal. *MapD will contribute your route to OSM for future improvement automatically.* You can add your own offset for mapd just follow the readme under `/selfdrive/mapd` Not connecting to the internet for while might feel up device storage from all the gps traces.
+        - **Enable Speed Limit Control:** Use speed limit signs information from map data and car interface to automatically adapt cruise speed to road limits.
+        - **Enable Speed Limit Offset:** Set speed limit slightly higher than actual speed limit for a more natural drive.
+        - **Enable Map Data Turn Control:** Use curvature info from map data to define speed limits to take turns ahead.
+        - **Show debug UI elements:** Show UI elements that aid debugging.
       - **Use Mapd without data:** You need minimum of 50 gb storage in `/data/media/0/`. Run `df -h /data/media/0/` to see how much space you have available. Strongly recommend getting 1 TB ssd. If you decide not to upgrade you can delete all logs under dp-general.
-       - **Enable Speed Limit Control:** Use speed limit signs information from map data and car interface to automatically adapt cruise speed to road limits.
-      - **Enable Speed Limit Offset:** Set speed limit slightly higher than actual speed limit for a more natural drive.
-      - **Enable Map Data Turn Control:** Use curvature info from map data to define speed limits to take turns ahead.
-      - **Show debug UI elements:** Show UI elements that aid debugging.
+        
 
 User Data
 ================
