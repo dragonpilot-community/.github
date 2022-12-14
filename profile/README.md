@@ -35,6 +35,7 @@ This fork is focused on Toyotas and Lexus with secondary attention given to Hond
 Main Features
 ==============
  - Always On lateral for all car makes.
+ - Dashcam recoarding function. Stored in /data/media/0/videos/
  - All tuning types for all vehicles. (PID, INDI, LQR, TORQUE)
  - The ability to toggle every aspect of your openpilot experience
  - Mapd support thanks to the @move-fast
@@ -116,6 +117,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Enable Max Ctrl Speed Check:** allows openpilot run at more than 95 mph
    - **Controller Type:** Manually select between PID, LQR, INDI, Torque controllers.
    
+
 - `Dragonpilot UI tab`
    - **Display Mode:** 0 = Default  1 = Screen Off While Driving
    - **Screen Brightness:** Adjust your screen brightness.
