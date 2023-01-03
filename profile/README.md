@@ -41,7 +41,7 @@ Main Features
  - Mapd support thanks to the @move-fast
  - Mapd can be used offline on select regions by downloading database on device.
  - Mapd can recoginze stop sign, yield sign, speed bump and round about.
- - DE2E (dynamic end to end long) auto switch between ACC to E2E Long( works with voacc cars as well i.g honda, vw)
+ - DE2E (dynamic end to end long) auto switch between ACC to E2E Long( works with voacc cars as well i.g honda, vw) [Demo Video](https://youtu.be/O4qxUAk9qRk)
  - Accleration Profiles controlled from your car's physical button ( TOYOTA ONLY: drive mode button ) or from the UI (OP Long only).
  - Dynamic Follow for all OP long cars. (Toyota can use the distance button on the wheel)
  - Better Long tune for Toyota.
