@@ -41,7 +41,7 @@ Main Features
  - Mapd support thanks to the @move-fast
  - Mapd can be used offline on select regions by downloading database on device.
  - Mapd can recoginze stop sign, yield sign, speed bump and round about.
- - DE2E (dynamic end to end long) auto switch between ACC to E2E Long
+ - DE2E (dynamic end to end long) auto switch between ACC to E2E Long( works with voacc cars as well i.g honda, vw)
  - Accleration Profiles controlled from your car's physical button ( TOYOTA ONLY: drive mode button ) or from the UI (OP Long only).
  - Dynamic Follow for all OP long cars. (Toyota can use the distance button on the wheel)
  - Better Long tune for Toyota.
@@ -110,9 +110,10 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Manually Control Accel Mode:** Enable this if you wish to adjust openpilot's acceleration control.
    - **Enable vision based turn control:** Use vision path predictions to estimate the appropriate speed to drive through turns ahead
    - **Manually Control Following Distance Mode:** Enable this if you wish to adjust openpilot's following distance. openpilot by default keeps 1.45 secs distance to lead car. When on close will be dynamic but get closer in traffic. Normal is also dynamic and it get further and far is stock 1.45se
-   - **Dynamic End-to-end:** Automatically Turn On and Off End-to-end longitudinal (extremely alpha), this will ignore the stock end-to-end settings
-     - **E2E When Car Set Speed Below (w/o Lead):** when acc set speed below the setting and there is no lead car, e2e will be turned on automatically. 1 kp/h = 0.62 mph
-     - **E2E When Lead Car Speed Below:** when lead car is going below the setting, e2e will be turned on automatically. 1 kp/h = 0.62 mph
+   - **Dynamic End-to-end:** Automatically Turn On and Off End-to-end longitudinal, this will ignore the stock end-to-end settings
+     - **DE2E w/ VOACC:** Enable this if your vehicles is in VOACC (e.g. Honda Bosch / VAG)
+     - **DE2E Adapt Following Mode:** Enable this if you wish to use following dist. mode in DE2E.
+     - **DE2E Adapt Accel Mode:** Enable this if you wish to use accel mode in DE2E.
    - **Enable Device Temp Check:** Override openpilot temperature safe check to engage
    - **Enable Max Ctrl Speed Check:** allows openpilot run at more than 95 mph
    - **Controller Type:** Manually select between PID, LQR, INDI, Torque controllers.
