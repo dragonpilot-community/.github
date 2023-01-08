@@ -95,7 +95,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Pandas Firmware Recovery:** Tap the button ONLY if your panda ran into issue.
    - **Reset dragonpilot config:** Tap the button to reset all your dragonpilot congiration to default value. Reboot required.
    - **Delete All Driving Log:** Tap the button to delete ALL your driving logs (including dashcam `/gpx/` driving logs)
-   - **Dashcam mode** Tap to record screen. This will record all UI elements and current camera view displayed on main display.
+   - **Dashcam mode** Tap to record screen. This will record all UI elements and current camera view displayed on main display. Located `/data/media/0/videos/`
 
  - `Dragonpilot Controls tab`
    - **Planner Vesrion:** change your lateral planner version. 1 = 0.8.13 2 = 0.8.16
