@@ -54,7 +54,8 @@ Main Features
  - Car selector for fast start up.
  - MapBox support without needing comma prime
  - C2 support for lastest master release via beta/release2/release2_e2e branches
- - Weekly/bi-weekly rebased with [comma/master](https://github.com/commaai/openpilot) branch for our c3 users
+ - Rianblow path for all the tesla lovers.
+ - Block alc if you are close to the road edge.
 
 Branch Definitions
 ====================
@@ -131,6 +132,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Display Top Info:** Enable this to display time / system temp / battery level.
    - **Display Lead Speed/Distance:** Display detected lead objects' speed and distance.
    - **Display Driver Camera:** Display Driver Camera when reversing.
+   - **Rainbow Path:** For all the tesla fanboy's..
 
 - `Dragonpilot Cars tab`
    - **Enable SnG Mod Toyota:** Enable this to fix stop and go (SnG) issue on some models. Reboot required.
