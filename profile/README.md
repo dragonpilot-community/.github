@@ -54,9 +54,11 @@ Main Features
  - Car selector for fast start up.
  - MapBox support without needing comma prime
  - C2 support for lastest master release via beta/release2/release2_e2e branches
- - Rianblow path for all the tesla lovers.
+ - Rianblow path for all the tesla lovers (changes based on the accelration) 
  - Block alc if you are close to the road edge.
-
+ - Dynamiclly Change lateral tune based on user selected toggle.
+ - WIP: Enhanced BSM detection for Toyota. (Prius is now supported) 
+  
 Branch Definitions
 ====================
 
@@ -101,9 +103,14 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
  - `Dragonpilot Controls tab`
    - **Planner Vesrion:** change your lateral planner version. 1 = 0.8.13 2 = 0.8.16
    - **Controller Type:** Override the default controller. 1 = PID 2 = LQR 3 = Torque Your Vehicle may not support all the options, YMMV.
+   - **Use Lanelines:** Use Lanelines instead of End-to-End when possible
+   - **Use Alternative Controller:** This feature will let you use alternative lateral controller at higher set speed.
+     - **When set speed Above:** when acc SET speed above the setting, it will switch to alternative controller. 1 km/h = 0.62 mph
+     - **Alternative controller:** 1 = PID 2 = LQR 3 = Torque. Your Vehicle may not support all the options, YMMV
+     - **Use Lanelines:** Use Lanelines instead of End-to-End when possible
    - **Enable Torque Ctrl Auto Tune:** Enable auto tune Torque controller. WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
-   - **Always On Lateral:** Use at your own risk! Your drive will not upload but you can find them under `/data/media/0/fakedata` you will not be ban but we just don't upload since comma does not use data from fork but it will be stored locally. 0 = stock  1 = Stock Long 2 = OP Long. Reboot required.
-   - **Use Lanelines:** "Use Lanelines instead of End-to-End when possible
+   - **Always On Lateral:** 0 = stock  1 = Stock Long 2 = OP Long. Reboot required. (uploads will not be ignored or you will not be banned)
+   - **ALC RoadEdge Detection:** Enabling this will prevent lane change when you are too close to road edge.
    - **Lane Change Mode:** 1 = Lane Change Assist (LCA) 2 = Auto Lane Change Assist (ALCA)
      - **LCA Min Speed:** LCA minimum engage speed in mph. 1 mph = 1.61 km/h
      - **ALCA Delay:** Once the vehicle meets all ALCA criteria, it will wait for the seconds set here before performing lane change automatically
@@ -167,7 +174,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
 User Data
 ================
 
-By default, dragopilot doesn't upload data to comma servers. You may enable data collection and forwarding to either comma or retropilot.api via toggle under DP general.
+By default, dragopilot doesn't upload data to comma servers(unless user turns on the toggle). You may enable data collection and forwarding to either comma or retropilot.api via toggle under DP general.
 Logger is on by default.
 We log crashes and fingerprinters to our sentry server.
 Mapd when toggle and enabled will automatic upload your gps trace to openstreetmap for everyone to see. This to help the mappers who work on openstreetmaps better map your area.
