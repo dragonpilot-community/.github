@@ -35,7 +35,7 @@ This fork is focused on Toyotas and Lexus with secondary attention given to Hond
 Warning
 =============
 
-***This fork is recommended for advanced users of openpilot only. This fork contains many experimental features, tweaks that modified and differ heavily from stock openpilot. Use at your own risk.***
+***This fork is recommended for experienced users of openpilot only. This fork contains many experimental features, tweaks that modified and differ heavily from stock openpilot. Use at your own risk.***
 
 Main Features
 ==============
