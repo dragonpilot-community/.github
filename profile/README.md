@@ -59,7 +59,7 @@ Main Features
  - Car selector for fast start up.
  - MapBox support without needing comma prime
  - C2 support for lastest master release via beta/release2/release2_e2e branches
- - Rianblow path for all the tesla lovers (changes based on the accelration) 
+ - Rainbow path for all the tesla lovers (changes based on the accelration) 
  - Block alc if you are close to the road edge.
  - Dynamiclly Change lateral tune based on user selected toggle.
  - WIP: Enhanced BSM detection for Toyota. (Prius is now supported) 
