@@ -62,7 +62,7 @@ Main Features
  - Rainbow path for all the tesla lovers (changes based on the accelration) 
  - Block alc if you are close to the road edge.
  - Dynamiclly Change lateral tune based on user selected toggle.
- - WIP: Enhanced BSM detection for Toyota. (Prius is now supported) 
+ - Enhanced BSM detection for Toyota. (Prius is now supported and rav4 TSS1) other vechials may work if it has stock bsm system but openpilot does not support it.
   
 Branch Definitions
 ====================
@@ -76,6 +76,7 @@ How To Install
 ===============
 
  - `Shane fork installer for Comma 3:` Type (https://smiskol.com/fork/dp) on custom URL window for `release3:`. 
+ - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/beta2) on custom URL window for `beta2:`.
  - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/release2) on custom URL window for `release2:`.
  - `Shane fork installer for comma 2:` Type (https://smiskol.com/fork/dp/release2_e2e) on custom URL window for `release2_e2e:`.
 
@@ -98,7 +99,6 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Use Custom API server:** Enable this if you wish to connect to a custom API server.Default to \"https://api.retropilot.org/", change \"dp_api_custom\" if you want to change API server URL. Reboot required.
    - **GPS Logger:** This will store your track in `/data/media/0/gpx_logs/`. Reboot required.
    - **Auto Shutdown:** Enable this if you wish to shutdown your device automatically.
-   - **Jetson Suppor:** Enable this option if you intend to run dp on Nvidia Jetson. Reboot required.
    - **Flashing Panda Firmware:** Tap the button to update your panda firmware. The device should reboot once if it finish updating.
    - **Pandas Firmware Recovery:** Tap the button ONLY if your panda ran into issue.
    - **Reset dragonpilot config:** Tap the button to reset all your dragonpilot congiration to default value. Reboot required.
@@ -114,8 +114,10 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
      - **Alternative controller:** 1 = PID 2 = LQR 3 = Torque. Your Vehicle may not support all the options, YMMV
      - **Use Lanelines:** Use Lanelines instead of End-to-End when possible
    - **Enable Torque Ctrl Auto Tune:** Enable auto tune Torque controller. WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
-   - **Always On Lateral:** 0 = stock  1 = Stock Long 2 = OP Long. Reboot required. (uploads will not be ignored or you will not be banned)
+   - **Always On Lateral:** 0 = stock  1 = Stock Long 2 = OP Long. Reboot required.
    - **ALC RoadEdge Detection:** Enabling this will prevent lane change when you are too close to road edge.
+   - **Manual Lane Change:** Enabling this will allow lane change manually when blinker is on. NOTES: Once LCA/ALCA is enabled, those settings will override manual lane change.
+                            e.g. If you have this option on and LCA at 20km/hr, ALCA at 40km/hr, speed below 20km/hr will be manual lane change. If you disable LCA/ALCA and have this option on, manual lane change will apply to ALL SPEED.
    - **Lane Change Mode:** 1 = Lane Change Assist (LCA) 2 = Auto Lane Change Assist (ALCA)
      - **LCA Min Speed:** LCA minimum engage speed in mph. 1 mph = 1.61 km/h
      - **ALCA Delay:** Once the vehicle meets all ALCA criteria, it will wait for the seconds set here before performing lane change automatically
@@ -129,7 +131,6 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
      - **DE2E Adapt Accel Mode:** Enable this if you wish to use accel mode in DE2E.
    - **Enable Device Temp Check:** Override openpilot temperature safe check to engage
    - **Enable Max Ctrl Speed Check:** allows openpilot run at more than 95 mph
-   - **Controller Type:** Manually select between PID, LQR, INDI, Torque controllers.
    
 
 - `Dragonpilot UI tab`
@@ -149,14 +150,15 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
 - `Dragonpilot Cars tab`
    - **Enable SnG Mod Toyota:** Enable this to fix stop and go (SnG) issue on some models. Reboot required.
    - **Enable FM Physical Button Ctrl Toyota:** Enable this to link Following Distance Mode (FM) control to the physical button (TSS2).\ONLY WORK ON SOME OF TSS1 VEHICLES WITH SDSU. Reboot required.
-   - **Enable AM Physical Button Ctrl Toyota:** Enable this to link Accel Mode (AM) control to the physical button (TSS2). ONLY WORK ON SOME OF TSS1 VEHICLES. Reboot require
+   - **Enable AM Physical Button Ctrl Toyota:** Enable this to link Accel Mode (AM) control to the physical button (TSS2). ONLY WORK ON SOME OF TSS1 VEHICLES. Reboot require.
+   - **Enable Enhance BSM Requests:** Enabling this will block alc for all the car's that has stock factor BSM that openpilot currently do not support. (Prius TSS2 and Rav4 TSS1 has been fully tested and working) also allow's your toyota/lexus see more object's. Reboot require.
    - **Turn On Cruise Speed Override Toyota:** This feature will let you set your cruise speed below vehicle standard. (usually at 26~40 km/h)
    - **Enable Door Auto Lock Toyota:** Enable this to lock doors when drive above 25 km/h. ONLY WORK ON SOME VEHICLES.
    - **Enable Door Auto Unlock Toyota:** Enable this to unlock doors when shift to gear P. ONLY WORK ON SOME VEHICLES.
    - **Enable TSS2 RAV4 Special PID Tune:** Enable this to use a special PID tune on 2019+ TSS2 RAV4. Reboot Required.
    - **Enable TSS-P Prius Special Torque Tune:** Enable this to use a special Torque tune on PRIUS 2017 w/ bad angle sensor. Reboot Required.
+   - **Enable Reverse ACC Set speed:** Enabling this will reverse set acc short press +5 jump, Long press +1 Jump. Reboot Required.
    - **Enable EPS Mod Mod Honda:** Enable this will increase steering, USE IT ONLY if you have a modded EPS firmware. Reboot required.
-   - **Enable VAG Resume Fix Volkswagen:** Enable this if your car does not auto resume (stop and go).Reboot required.
    - **Display Below Steer Speed Alert Mazada** Enable this will show below steer speed alert.Thanks to @TheCrowd
    - **Bypass Dashcam mode Mazada** Enable this to bypass dashcam mode.
    
@@ -179,7 +181,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
 User Data
 ================
 
-By default, dragopilot doesn't upload data to comma servers(unless user turns on the toggle). You may enable data collection and forwarding to either comma or retropilot.api via toggle under DP general.
+By default, dragopilot does upload data to comma servers(unless user turns off the toggle). You may enable data collection and forwarding to either comma or retropilot.api via toggle under DP general.
 Logger is on by default.
 We log crashes and fingerprinters to our sentry server.
 Mapd when toggle and enabled will automatic upload your gps trace to openstreetmap for everyone to see. This to help the mappers who work on openstreetmaps better map your area.
