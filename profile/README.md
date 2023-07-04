@@ -63,6 +63,7 @@ Main Features
  - Block alc if you are close to the road edge.
  - Dynamiclly Change lateral tune based on user selected toggle.
  - Enhanced BSM detection for Toyota. (Prius is now supported and rav4 TSS1) other vechials may work if it has stock bsm system but openpilot does not support it.
+ - WIP: https://bit.ly/navonop
   
 Branch Definitions
 ====================
