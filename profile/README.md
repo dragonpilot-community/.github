@@ -63,6 +63,7 @@ Main Features
  - Block alc if you are close to the road edge.
  - Dynamiclly Change lateral tune based on user selected toggle.
  - Enhanced BSM detection for Toyota. (Prius is now supported and rav4 TSS1) other vechials may work if it has stock bsm system but openpilot does not support it.
+ - WIP: https://bit.ly/navonop
   
 Branch Definitions
 ====================
@@ -89,9 +90,6 @@ Setting Menu
 =============
 BIG BLUE box is the car selector for fast start up. Other wise please try this if your car doesn't recognize on ignition don't make a bug report untill you tried it please.
    
- - `software` 
-    - **OpenstreetMap Data:** update check and offline datebase use for mapd offline maps. Requires `Enable Mapd` and  `Use Mpad without data` toggle active to work. (Thanks to @sunnyhaibin for UI portion of DB selector)
-    
  - `navigation`
    * Will only Works when `Enable Nav` is on under dp-maps. To set your home / work destination use the qr code on the sidebar.
    
@@ -106,6 +104,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    - **Dashcam mode** Tap to record screen. This will record all UI elements and current camera view displayed on main display. Located `/data/media/0/videos/`
 
  - `Dragonpilot Controls tab`
+   - **Always On Lateral:** 0 = stock  1 = Stock Long (if you use stock acc) 2 = OP Long (if your car supports op long). Reboot required.
    - **Planner Vesrion:** change your lateral planner version. 1 = 0.8.13 2 = 0.8.16
    - **Controller Type:** Override the default controller. 1 = PID 2 = LQR 3 = Torque Your Vehicle may not support all the options, YMMV.
    - **Use Lanelines:** Use Lanelines instead of End-to-End when possible
@@ -114,7 +113,6 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
      - **Alternative controller:** 1 = PID 2 = LQR 3 = Torque. Your Vehicle may not support all the options, YMMV
      - **Use Lanelines:** Use Lanelines instead of End-to-End when possible
    - **Enable Torque Ctrl Auto Tune:** Enable auto tune Torque controller. WORKS WELL ONLY ON SOME VEHICLES. More linear steering experience.
-   - **Always On Lateral:** 0 = stock  1 = Stock Long 2 = OP Long. Reboot required.
    - **ALC RoadEdge Detection:** Enabling this will prevent lane change when you are too close to road edge.
    - **Manual Lane Change:** Enabling this will allow lane change manually when blinker is on. NOTES: Once LCA/ALCA is enabled, those settings will override manual lane change.
                             e.g. If you have this option on and LCA at 20km/hr, ALCA at 40km/hr, speed below 20km/hr will be manual lane change. If you disable LCA/ALCA and have this option on, manual lane change will apply to ALL SPEED.
@@ -134,10 +132,9 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
    
 
 - `Dragonpilot UI tab`
-   - **Display Mode:** 0 = Default  1 = Screen Off While Driving
+   - **Display Mode:** Standard = stock, On-Road = The display will be off when driving (excluding warnings), MAIN = The display will be off when ACC Main is on (excluding warnings), OP = The display will be off when OP is enabled (excluding warnings), Off = The display will be off completely (including warnings). REBOOT REQUIRED.
+   - **Alert Volume:** The audible alert mode determines whether or not the device will emit a sound when there is an alert. Standard = The device will emit a sound for all alerts, Warning = The device will only emit a sound for warnings, Off = The device will not emit any sound.
    - **Screen Brightness:** Adjust your screen brightness.
-   - **Alert Volume:** Adjust your alert volume.
-   - **Quiet Drive:** Display alert and play important warning sound. Thanks @sunnyhaibin.
    - **Display Speed:** Enable this to display your current speed.
    - **Display Event/Steer Icon:** Enable this to display the icon.
    - **Display Driver Monitor Indicator:** Enable this to display the icon,
@@ -176,6 +173,7 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
         - **Enable Map Data Turn Control:** Use curvature info from map data to define speed limits to take turns ahead.
         - **Show debug UI elements:** Show UI elements that aid debugging.
       - **Use Mapd without data:** You need minimum of 50 gb storage in `/data/media/0/`. Run `df -h /data/media/0/` to see how much space you have available. Strongly recommend getting 1 TB ssd. If you decide not to upgrade you can delete all logs under dp-general.
+      - **OpenstreetMap Data:** update check and offline datebase use for mapd offline maps. Requires `Enable Mapd` and  `Use Mpad without data` toggle active to work. (Thanks to @sunnyhaibin for UI portion of DB selector)
         
 
 User Data
