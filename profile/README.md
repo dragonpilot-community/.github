@@ -37,7 +37,7 @@ Warning
 
 ***This fork is recommended for experienced users of openpilot only. This fork contains many experimental features and tweaks that modify heavily and differ from stock openpilot experience. Use at your own risk.***
 
-Main Features
+Main Features (release3 only. THIS BRANCH DOES NOT SUPPORT C3X USE BETA3 )
 ==============
  - Always On lateral for all car makes.
  - Dashcam recoarding function. Stored in /data/media/0/videos/
