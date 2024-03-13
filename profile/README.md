@@ -43,9 +43,6 @@ Main Features (release3 only. THIS BRANCH DOES NOT SUPPORT C3X USE BETA3 )
  - Dashcam recoarding function. Stored in /data/media/0/videos/
  - All tuning types for all vehicles. (PID, INDI, LQR, TORQUE)
  - The ability to toggle every aspect of your openpilot experience
- - Mapd support thanks to the @move-fast
- - Mapd can be used offline on select regions by downloading database on device.
- - Mapd can recoginze stop sign, yield sign, speed bump and round about.
  - DE2E (dynamic end to end long) auto switch between ACC to E2E Long( works with voacc cars as well i.g honda, vw) [Demo Video](https://youtu.be/O4qxUAk9qRk)
  - Accleration Profiles controlled from your car's physical button ( TOYOTA ONLY: drive mode button ) or from the UI (OP Long only).
  - Dynamic Follow for all OP long cars. (Toyota can use the distance button on the wheel)
@@ -55,7 +52,7 @@ Main Features (release3 only. THIS BRANCH DOES NOT SUPPORT C3X USE BETA3 )
  - Volkswagen support for auto resume.
  - Choose bettween three different Lateral palanner. (0.8.13, 0.8.16, latest)
  - Laneline with auto DLP (Dynamic Lane Profile) @sunnyhaibin.
- - Lane chage mode (1 = lane change assist, 2 = auto lane change assist) both customizeable.
+ - Lane chage mode (auto lane change assist) customizeable.
  - Car selector for fast start up.
  - MapBox support without needing comma prime
  - C2 support for lastest master release via beta/release2/release2_e2e branches
@@ -68,17 +65,16 @@ Main Features (release3 only. THIS BRANCH DOES NOT SUPPORT C3X USE BETA3 )
 Branch Definitions
 ====================
 
- - `release3:` main branch for c3 users rebased to [comma/master](https://github.com/commaai/openpilot) a week prior then checked for stability before added lastest Dragonpilot features on top for your enjoyment.
- - `release2:` main branch for c2 users based of [comma/master](https://github.com/commaai/openpilot), functionally as stable as the c2 will be given it's hardware limitations.
- - `beta2/3:` Cutting edge most likely unstable branches of what future of Dragonpilot will be
- - `release2_e2e:` cutting edge features being tested on older version otherwise stable version of Dragonpilot
+ - `beta3:` main branch for c3 users rebased to [comma/master](https://github.com/commaai/openpilot) a week prior then checked for stability before added lastest Dragonpilot features on top for your enjoyment.
+ - `r2:` main branch for c2 users based of [comma/master](https://github.com/commaai/openpilot), functionally as stable as the c2 will be given it's hardware limitations.
+ - `d2/3:` developemnt branch on the cutting edge most likely unstable branches of what future of Dragonpilot will be..
  
 How To Install
 ===============
 
- - `Shane fork installer for Comma 3:` Type (https://smiskol.com/fork/dp) on custom URL window for `release3:`. 
- - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/beta2) on custom URL window for `beta2:`.
- - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/release2) on custom URL window for `release2:`.
+ - `Shane fork installer for Comma 3:` Type (https://smiskol.com/fork/dp) on custom URL window for `beta3:`. 
+ - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/r2) on custom URL window for `r2:`.
+ - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/d3) on custom URL window for `development:`.
  - `Shane fork installer for comma 2:` Type (https://smiskol.com/fork/dp/release2_e2e) on custom URL window for `release2_e2e:`.
 
 Community and Contributing
@@ -129,42 +125,8 @@ BIG BLUE box is the car selector for fast start up. Other wise please try this i
      - **DE2E Adapt Accel Mode:** Enable this if you wish to use accel mode in DE2E.
    - **Enable Device Temp Check:** Override openpilot temperature safe check to engage
    - **Enable Max Ctrl Speed Check:** allows openpilot run at more than 95 mph
-   
 
-- `Dragonpilot UI tab`
-   - **Display Mode:** Standard = stock, On-Road = The display will be off when driving (excluding warnings), MAIN = The display will be off when ACC Main is on (excluding warnings), OP = The display will be off when OP is enabled (excluding warnings), Off = The display will be off completely (including warnings). REBOOT REQUIRED.
-   - **Alert Volume:** The audible alert mode determines whether or not the device will emit a sound when there is an alert. Standard = The device will emit a sound for all alerts, Warning = The device will only emit a sound for warnings, Off = The device will not emit any sound.
-   - **Screen Brightness:** Adjust your screen brightness.
-   - **Display Speed:** Enable this to display your current speed.
-   - **Display Event/Steer Icon:** Enable this to display the icon.
-   - **Display Driver Monitor Indicator:** Enable this to display the icon,
-   - **Display side info** Enable this to display steering angle/lead car/distance/engine RPM.
-   - **Display Top Info:** Enable this to display time / system temp / battery level.
-   - **Display Lead Speed/Distance:** Display detected lead objects' speed and distance.
-   - **Display Driver Camera:** Display Driver Camera when reversing.
-   - **Rainbow Path:** For all the tesla fanboy's..
 
-- `Dragonpilot Cars tab`
-   - **Enable SnG Mod Toyota:** Enable this to fix stop and go (SnG) issue on some models. Reboot required.
-   - **Enable FM Physical Button Ctrl Toyota:** Enable this to link Following Distance Mode (FM) control to the physical button (TSS2).\ONLY WORK ON SOME OF TSS1 VEHICLES WITH SDSU. Reboot required.
-   - **Enable AM Physical Button Ctrl Toyota:** Enable this to link Accel Mode (AM) control to the physical button (TSS2). ONLY WORK ON SOME OF TSS1 VEHICLES. Reboot require.
-   - **Enable Enhance BSM Requests:** Enabling this will block alc for all the car's that has stock factor BSM that openpilot currently do not support. (Prius TSS2 and Rav4 TSS1 has been fully tested and working) also allow's your toyota/lexus see more object's. Reboot require.
-   - **Turn On Cruise Speed Override Toyota:** This feature will let you set your cruise speed below vehicle standard. (usually at 26~40 km/h)
-   - **Enable Door Auto Lock Toyota:** Enable this to lock doors when drive above 25 km/h. ONLY WORK ON SOME VEHICLES.
-   - **Enable Door Auto Unlock Toyota:** Enable this to unlock doors when shift to gear P. ONLY WORK ON SOME VEHICLES.
-   - **Enable TSS2 RAV4 Special PID Tune:** Enable this to use a special PID tune on 2019+ TSS2 RAV4. Reboot Required.
-   - **Enable TSS-P Prius Special Torque Tune:** Enable this to use a special Torque tune on PRIUS 2017 w/ bad angle sensor. Reboot Required.
-   - **Enable Reverse ACC Set speed:** Enabling this will reverse set acc short press +5 jump, Long press +1 Jump. Reboot Required.
-   - **Enable EPS Mod Mod Honda:** Enable this will increase steering, USE IT ONLY if you have a modded EPS firmware. Reboot required.
-   - **Display Below Steer Speed Alert Mazada** Enable this will show below steer speed alert.Thanks to @TheCrowd
-   - **Bypass Dashcam mode Mazada** Enable this to bypass dashcam mode.
-   
-- `Dragonpilot Maps tab`
- - **DP NAV:**
-      - **Enable Nav.:** This will let use the build in Navigation. Reboot required.
-        - **Enable Local Nav Server:** This will let use Navigation feature with your own access key. Use web interface to control it: *http://<device_ip>:8082* or scan the qr code on the sidebar. You will need to apply your own mapbox token at https://www.mapbox.com/. Internet access from mobile phone (tethering) is required. Reboot required.
-        - **Search Destination using Google Maps:** This will allow you to search destination in google map api. You will need to apply your own google map api key. Enter your key detail in web interface once it's enabled.
-        - **Show Full Screen Nav.:** This will show navigation in full screen. Please tap green boarder if you wish to switch back drive view.
 
 User Data
 ================
