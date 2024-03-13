@@ -37,7 +37,7 @@ Warning
 
 ***This fork is recommended for experienced users of openpilot only. This fork contains many experimental features and tweaks that modify heavily and differ from stock openpilot experience. Use at your own risk.***
 
-Main Features (release3 only. THIS BRANCH DOES NOT SUPPORT C3X USE BETA3 )
+Main Features (release3 only. THIS BRANCH DOES NOT SUPPORT C3X USE BETA3 or D3 )
 ==============
  - Always On lateral for all car makes.
  - Dashcam recoarding function. Stored in /data/media/0/videos/
@@ -75,7 +75,6 @@ How To Install
  - `Shane fork installer for Comma 3:` Type (https://smiskol.com/fork/dp) on custom URL window for `beta3:`. 
  - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/r2) on custom URL window for `r2:`.
  - `Shane fork installer for Comma 2:` Type (https://smiskol.com/fork/dp/d3) on custom URL window for `development:`.
- - `Shane fork installer for comma 2:` Type (https://smiskol.com/fork/dp/release2_e2e) on custom URL window for `release2_e2e:`.
 
 Community and Contributing
 ===============
@@ -134,7 +133,6 @@ User Data
 By default, dragopilot does upload data to comma servers(unless user turns off the toggle). You may enable data collection and forwarding to either comma or retropilot.api via toggle under DP general.
 Logger is on by default.
 We log crashes and fingerprinters to our sentry server.
-Mapd when toggle and enabled will automatic upload your gps trace to openstreetmap for everyone to see. This to help the mappers who work on openstreetmaps better map your area.
 
 License
 ================
